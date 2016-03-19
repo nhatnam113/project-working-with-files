@@ -30,6 +30,10 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             #       3. place the randomly-generated quizzes in the 'quizzes' directory.
             #       4. plaec the corresponding answers in the 'answers' directory.
 
+quizpath = "./quizzes"
+
+anspath = "./answer" 
+
 os.makedirs('./quizzes')
 
 os.makedirs('./answers')
