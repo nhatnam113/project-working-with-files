@@ -30,44 +30,30 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             #       3. place the randomly-generated quizzes in the 'quizzes' directory.
             #       4. plaec the corresponding answers in the 'answers' directory.
 
-quizpath = "./quizzes"
-
-anspath = "./answer" 
-
 os.makedirs('./quizzes')
-
 os.makedirs('./answers')
 
-for quizNum in range (5):
-    quizFile = open ( './quizzes/capitalsquiz%s.txt' % (quizNum +1, 'w')
-    answerFile = open ('./answer/capitalsquiz_answer%s.txt' % (quizNum +1), 'w')
+for quizNum in range(5):
+    quizFile = open('./quizzes/capitalsquiz%s.txt' % (quizNum + 1), 'w')
+    answerKeyFile = open('./answers/capitalsquiz_answer%s.txt' % (quizNum + 1), 'w')
+    quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
+    quizFile.write((''*20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))
+    quizFile.write('\n\n')
+    states = list(capitals.keys())
+    random.shuffle(states)
 
-    quizFile.write ('Name:\n\nPeriod:\n\n')
-    quizFile.write((' ' * 20) + 'State Capital Quiz (Form %s)' % (quizNum + 1))
-    quizFile.write ('\n\n')
-
-    state = list(capitals.keys())
-    random.shuffle (states)
-  
-    for questionNum in range (50):
+    for questionNum in range(50):
         correctAnswer = capitals[states[questionNum]]
-        wrongAnswers = list(capitals.values())
-        del wrongAnswers[wrongAnswer.index(correctAnswer)]
-        wronganswers = random.sample(wrongAnswer,3)
+        wrongAnswer = list(capital.value())
+        del wrongAnswer[wrongAnswer.index(correct)]
+        wrongAnswer = random.sample(wrongAnswer, 3)
         answerOptions = wrongAnswer + [correctAnswer]
         random.shuffle(answerOptions)
 
-     
-        quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1,states[questionNum]))
-
+        quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
         for i in range(4):
             quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
-            quizFile.write('\n')
- 
-        answerFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
-
+        quizFile.write('\n')
+        answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
 quizFile.close()
-answerFile.close()
-
-            
-            
+answerKeyFile.close()
