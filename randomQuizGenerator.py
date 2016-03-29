@@ -1,3 +1,4 @@
+
 #! python3
 # randomQuizGenerator.py - Creates quizzes with questions and answers in
 # random order, along with the answer key.
@@ -37,17 +38,17 @@ for quizNum in range(5):
     quizFile = open('./quizzes/capitalsquiz%s.txt' % (quizNum + 1), 'w')
     answerKeyFile = open('./answers/capitalsquiz_answer%s.txt' % (quizNum + 1), 'w')
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
-    quizFile.write((''*20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))
+    quizFile.write((' '* 20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))
     quizFile.write('\n\n')
     states = list(capitals.keys())
     random.shuffle(states)
 
     for questionNum in range(50):
         correctAnswer = capitals[states[questionNum]]
-        wrongAnswer = list(capital.value())
-        del wrongAnswer[wrongAnswer.index(correct)]
-        wrongAnswer = random.sample(wrongAnswer, 3)
-        answerOptions = wrongAnswer + [correctAnswer]
+        wrongAnswers = list(capitals.values())
+        del wrongAnswers[wrongAnswers.index(correctAnswer)]
+        wrongAnswers = random.sample(wrongAnswers, 3)
+        answerOptions = wrongAnswers + [correctAnswer]
         random.shuffle(answerOptions)
 
         quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
